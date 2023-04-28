@@ -7,14 +7,14 @@ CREATE TABLE docs (id INT, productId STRING, userId STRING, profileName STRING, 
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
-LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Reviews.csv' 
+LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews.csv' 
 	OVERWRITE INTO TABLE docs;
 
-ADD FILE ./Documenti/BigData/first_project_baronato/first_job/hive/date_convert.py;
+ADD FILE ./Documents/GitHub/first_project_baronato/first_job/hive/date_convert.py;
 
 CREATE TABLE year_productId2Text AS
 	SELECT TRANSFORM(docs.time, docs.productId, docs.text) 
-	USING 'python3 ./Documenti/BigData/first_project_baronato/first_job/hive/date_convert.py'
+	USING 'python3 ./Documents/GitHub/first_project_baronato/first_job/hive/date_convert.py'
 	AS year, productId, text
 	FROM docs;
 
