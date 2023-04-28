@@ -3,6 +3,7 @@
 
 import sys
 import datetime
+from parse_text import parse
 
 for line in sys.stdin:
     # eliminazione degli spazi bianchi
@@ -29,6 +30,7 @@ for line in sys.stdin:
     text = fields_csv[9]
 
     # salvare nel file chunk per reduce i valori di interesse
-    print("%s\t%s" % (str(int_year) + '~' + product_id, text))
+    print("%s\t%s" % (str(int_year) + '~' + product_id, parse(text)))
 
     # (k, v) = (int_year~product_id, text)
+    
