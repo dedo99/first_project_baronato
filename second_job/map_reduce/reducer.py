@@ -4,6 +4,7 @@
 import sys
 
 userid2listReviews = {}
+sortedByHelpfulness = {}
 
 for line in sys.stdin:
     # eliminazione degli spazi bianchi
@@ -12,7 +13,7 @@ for line in sys.stdin:
     # separazione dei campi del file sulla virgola
     current_userid, currentHelpfulness  = line.split("\t")
 
-    currentHelpfulnessNumerator, currentHelpfulnessDenominator = currentHelpfulness("~")
+    currentHelpfulnessNumerator, currentHelpfulnessDenominator = currentHelpfulness.split("~")
 
     try:
         currentHelpfulnessNumerator = int(currentHelpfulnessNumerator)
@@ -28,8 +29,12 @@ for line in sys.stdin:
     else:
         userid2listReviews[current_userid].append(float(currentHelpfulnessNumerator/currentHelpfulnessDenominator))
 
-
 for userid in userid2listReviews:
-    print("%s\t%f" % (userid, sum(userid2listReviews[userid])/len(userid2listReviews[userid])))
+    sortedByHelpfulness[userid] = sum(userid2listReviews[userid])/len(userid2listReviews[userid])
+
+sortedByHelpfulness = {k: v for k, v in sorted(sortedByHelpfulness.items(), key=lambda item: item[1], reverse=True)}
+
+for userid in sortedByHelpfulness:
+    print("%s\t%f" % (userid, sortedByHelpfulness[userid]))
     
 

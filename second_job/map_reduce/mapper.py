@@ -15,11 +15,11 @@ for line in sys.stdin:
     helpfulnessNumerator = fields_csv[4]
     helpfulnessDenominator = fields_csv[5]
 
-    # try:
-    #     helpfulnessNumerator = int(helpfulnessNumerator)
-    #     helpfulnessDenominator = int(helpfulnessDenominator)
-    # except ValueError:
-    #     continue
+    try:
+        helpfulnessNumerator = int(helpfulnessNumerator)
+        helpfulnessDenominator = int(helpfulnessDenominator)
+    except ValueError:
+        continue
 
     # salvare nel file chunk per reduce i valori di interesse
     print("%s\t%s" % (user_id, str(helpfulnessNumerator) + '~' + str(helpfulnessDenominator)))
