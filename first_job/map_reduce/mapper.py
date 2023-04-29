@@ -3,7 +3,6 @@
 
 import sys
 import datetime
-from parse_text import parse
 
 for line in sys.stdin:
     # eliminazione degli spazi bianchi
@@ -12,25 +11,17 @@ for line in sys.stdin:
     # separazione dei campi del file sulla virgola
     fields_csv = line.split(",")
 
-    # converti il tempo Unix in una data
-    try:
-        date_time = datetime.datetime.fromtimestamp(int(fields_csv[7]))
-    except ValueError:
-        continue
-
-    # stampa la data formattata ed estre l'anno
-    date = date_time.strftime('%Y-%m-%d %H:%M:%S')
-    year = date.split('-')[0]
+    year = fields_csv[6]
     try:
         int_year = int(year)
     except ValueError:
         continue
 
     product_id = fields_csv[1]
-    text = fields_csv[9]
+    text = fields_csv[7]
 
     # salvare nel file chunk per reduce i valori di interesse
-    print("%s\t%s" % (str(int_year) + '~' + product_id, parse(text)))
+    print("%s\t%s" % (str(int_year) + '~' + product_id, text))
 
     # (k, v) = (int_year~product_id, text)
     

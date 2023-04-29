@@ -3,19 +3,16 @@ DROP TABLE IF EXISTS year_productId2Text;
 DROP TABLE IF EXISTS reviews_for_yearProductId;
 DROP TABLE IF EXISTS wordcount_for_reviews;
 
-CREATE TABLE docs (id INT, productId STRING, userId STRING, profileName STRING, helpfulnessNum INT, helpfulnessDen INT, score INT, time STRING, summary STRING, text STRING)
+CREATE TABLE docs (id INT, productId STRING, userId STRING, helpfulnessNum INT, helpfulnessDen INT, score INT, time STRING, text STRING)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
-LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews.csv' 
+LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Reviews_parsed.csv' 
+--LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews_parsed.csv' 
 	OVERWRITE INTO TABLE docs;
 
-ADD FILE ./Documents/GitHub/first_project_baronato/first_job/hive/date_convert.py;
-
 CREATE TABLE year_productId2Text AS
-	SELECT TRANSFORM(docs.time, docs.productId, docs.text) 
-	USING 'python3 ./Documents/GitHub/first_project_baronato/first_job/hive/date_convert.py'
-	AS year, productId, text
+	SELECT time AS year, productId, text 
 	FROM docs;
 
 CREATE TABLE reviews_for_yearProductId AS

@@ -33,8 +33,8 @@ for line in sys.stdin:
     if (current_year, current_productid) not in year_productid2wordcount:
         year_productid2wordcount[(current_year, current_productid)] = {}
     for word in words:
-        if len(word) < 4:
-            continue
+        # if len(word) < 4:
+        #    continue
         if word not in year_productid2wordcount[(current_year, current_productid)]:
             year_productid2wordcount[(current_year, current_productid)][word] = 0
         year_productid2wordcount[(current_year, current_productid)][word] += 1
