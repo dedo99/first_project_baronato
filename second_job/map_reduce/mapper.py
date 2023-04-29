@@ -12,8 +12,8 @@ for line in sys.stdin:
 
     # prendere campi necessari
     user_id = fields_csv[2]
-    helpfulnessNumerator = fields_csv[4]
-    helpfulnessDenominator = fields_csv[5]
+    helpfulnessNumerator = fields_csv[3]
+    helpfulnessDenominator = fields_csv[4]
 
     try:
         helpfulnessNumerator = int(helpfulnessNumerator)
