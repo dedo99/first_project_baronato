@@ -32,7 +32,7 @@ year_productID_one_RDD = productID_year_text_RDD.map(f=lambda lista: ((lista[1],
 # count by year e productid, group by year e top10 
 top10_year_RDD = year_productID_one_RDD.reduceByKey(add) \
             .map(lambda x: (x[0][0], (x[1], x[0][1]))).groupByKey() \
-            .map(lambda x: (x[0], nlargest(n1, x[1])))   
+            .map(lambda x: (x[0], nlargest(n1, x[1])))
 
 # lista con coppie (anno, prodotto) --> perchè il formato top10_year_RDD è diverso
 def extract(lista):
@@ -53,8 +53,8 @@ year_product_word_RDD = productID_year_text_filtered_RDD \
 
 # DA AGGIUSTARE!!!
 top5_words_RDD = year_product_word_RDD.reduceByKey(add) \
-    .map(lambda x: ((x[0][0], x[0][1]), (x[0][2], x[1]))).groupBy(lambda x: (x[0][0], x[0][1])) \
-    .map(lambda x: (x[0], nlargest(n2, x[1][1])))
+    .map(lambda x: (x[0][0]+ '~' +x[0][1], (x[1], x[0][2]))).groupByKey() \
+    .map(lambda x: (x[0], nlargest(n2, x[1])))
 
 # # stampa del risultato
 print(top5_words_RDD.collect())
