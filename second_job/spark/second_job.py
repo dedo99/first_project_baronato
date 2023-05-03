@@ -9,7 +9,6 @@ parser.add_argument("--output_path", type=str, help="Output file path")
 args = parser.parse_args()
 input_filepath, output_filepath = args.input_path, args.output_path
 
-
 spark = SparkSession.builder.appName("SECOND_JOB").getOrCreate()
 
 # restituisce un RDD dopo avere caricato il file dato in input
