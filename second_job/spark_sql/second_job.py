@@ -37,6 +37,13 @@ sorted_userId_appreciation_DF = userId_appreciation_DF.sort("Appreciation", asce
 
 sorted_userId_appreciation_DF.show()
 
+# salvataggio output su file in hdfs
+sorted_userId_appreciation_DF.coalesce(1).write.format('csv').save("/user/spark_sql/second_job/output", header='true')
 
 
 # $SPARK_HOME/bin/spark-submit --master local Documents/GitHub/first_project_baronato/second_job/spark_sql/second_job.py --input_path file:///home/andrea/Documents/GitHub/first_project_baronato/Reviews_parsed.csv
+
+# TEMPI DI ESECUZIONE SU DATASET ORIGINALE
+# real	0m21,731s
+# user	1m8,225s
+# sys	0m1,788s

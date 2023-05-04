@@ -61,5 +61,13 @@ top_5_year_productId_countWords_SQL.show()
 top10_year_productId_top5_words_DF = top_10_year_productId_DF.join(top_5_year_productId_countWords_SQL, ["Time", "ProductId"], "inner").sort("Time", "ProductId","count", ascending=True)
 top10_year_productId_top5_words_DF.show()
 
+# salvataggio output su file in hdfs
+top10_year_productId_top5_words_DF.coalesce(1).write.format('csv').save("/user/spark_sql/first_job/output", header='true')
+
 
 # $SPARK_HOME/bin/spark-submit --master local Documents/GitHub/first_project_baronato/first_job/spark_sql/first_job.py --input_path file:///home/andrea/Documents/GitHub/first_project_baronato/Reviews_parsed.csv
+
+# TEMPI DI ESECUZIONE SU DATASET ORIGINALE
+# real	4m10,920s
+# user	5m48,558s
+# sys	0m9,114s
