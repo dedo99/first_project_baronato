@@ -1,0 +1,21 @@
+#################### ANDREA COMMAND ####################
+
+######## RUN FIRST VERSION NO MAPPER RATIO ########
+
+$HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/streaming/hadoop-streaming-3.3.4.jar -mapper ./Documents/GitHub/first_project_baronato/second_job/map_reduce/first_version_no_mapper_ratio/mapper.py -reducer ./Documents/GitHub/first_project_baronato/second_job/map_reduce/first_version_no_mapper_ratio/reducer.py -input /user/andrea/input/Reviews_parsed.csv -output /user/andrea/output/map_reduce_2_job_version_no_mapper_ratio
+
+######## RUN SECOND VERSION MAPPER RATIO ########
+
+# $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/streaming/hadoop-streaming-3.3.4.jar -mapper ./Documents/GitHub/first_project_baronato/second_job/map_reduce/second_version_mapper_ratio/mapper.py -reducer ./Documents/GitHub/first_project_baronato/second_job/map_reduce/second_version_mapper_ratio/reducer.py -input /user/andrea/input/Reviews_parsed.csv -output /user/andrea/output/map_reduce_2_job_version_mapper_ratio
+
+
+
+
+
+#################### PIETRO COMMAND ####################
+
+######## RUN FIRST VERSION NO MAPPER RATIO ########
+
+
+######## RUN SECOND VERSION MAPPER RATIO ########
+
