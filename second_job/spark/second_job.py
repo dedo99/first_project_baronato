@@ -14,6 +14,11 @@ spark = SparkSession.builder.appName("SECOND_JOB").getOrCreate()
 # restituisce un RDD dopo avere caricato il file dato in input
 input_RDD = spark.sparkContext.textFile(input_filepath)
 
+# per rimuovere l'header
+header = input_RDD.first()
+
+input2_RDD = input_RDD.filter(lambda row: row != header)
+
 def userId_utility(coppia):
     helpfulness = coppia[1][0].split('~')
     try:
@@ -29,7 +34,7 @@ def userId_utility(coppia):
 
 
 # splitta i record in campi sulla base della virgola 
-rows = input_RDD.map(lambda line: line.split(","))
+rows = input2_RDD.map(lambda line: line.split(","))
 
 # viene creata una coppia dove la chiave è userid e il valore è una coppia dove:
 # --il primo elemento è helpfulnessNum~helpfulnessDen

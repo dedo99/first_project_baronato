@@ -23,7 +23,8 @@ CREATE TABLE userId2AvgUtility AS
     FROM userId2utility
     GROUP BY userId;
 
-INSERT OVERWRITE LOCAL DIRECTORY './Desktop/output'
+INSERT OVERWRITE DIRECTORY '/user/pietro/output/HIVE/first_job'
+--INSERT OVERWRITE LOCAL DIRECTORY './Desktop/output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT userId, apprezzamento FROM userId2AvgUtility ORDER BY apprezzamento DESC;
 
