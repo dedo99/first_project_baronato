@@ -58,7 +58,7 @@ year_productId_countWords_SQL.createOrReplaceTempView("year_productId_countWords
 top_5_year_productId_countWords_SQL = spark.sql("SELECT Time, ProductId, word, count_word FROM (SELECT Time, ProductId, word, count_word, ROW_NUMBER() OVER (PARTITION BY Time, ProductId ORDER BY count_word DESC) AS rank FROM year_productId_countWords_SQL) WHERE rank <= 5")
 top_5_year_productId_countWords_SQL.show()
 
-top10_year_productId_top5_words_DF = top_10_year_productId_DF.join(top_5_year_productId_countWords_SQL, ["Time", "ProductId"], "inner").sort("Time", "ProductId","count", ascending=False)
+top10_year_productId_top5_words_DF = top_10_year_productId_DF.join(top_5_year_productId_countWords_SQL, ["Time", "ProductId"], "inner").sort("Time", "ProductId","count", ascending=True)
 top10_year_productId_top5_words_DF.show()
 
 
