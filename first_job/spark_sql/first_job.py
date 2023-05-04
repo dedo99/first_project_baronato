@@ -1,6 +1,6 @@
 import argparse
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when, concat_ws, collect_list
+from pyspark.sql.functions import col, when, concat_ws, collect_list, collect_set
 from pyspark.sql.types import IntegerType, StringType, StructType, StructField
 
 parser = argparse.ArgumentParser()
@@ -29,13 +29,37 @@ reviews_DF = spark.read.csv(input_filepath, header = True, schema = custom_schem
 reviews_DF.show()
 reviews_DF.printSchema()
 
-year_productId_DF = reviews_DF.groupBy("Time", "ProductId").count().sort("count", ascending = False).show()
+year_productId_DF = reviews_DF.groupBy("Time", "ProductId").count().sort("count", ascending=False)
+year_productId_DF.show()
 
-year_productId_concatenatedText_DF = reviews_DF.groupBy("Time", "ProductId").agg(concat_ws(" ", collect_list("Text")).alias("concatenated_text")).show()
+list_year = reviews_DF.select(collect_set("Time")).first()[0]
 
-year_DF = list(reviews_DF.select("Time").distinct())
+# creare il DataFrame vuoto
+empty_schema = StructType([StructField("Time", IntegerType(), True), StructField("ProductId", StringType(), True), StructField("count", IntegerType(), True)])
+top_10_year_productId_DF = spark.createDataFrame([], empty_schema)
 
-print(year_DF)
+for year in list_year:
+    temp = year_productId_DF.select("Time", "ProductId", "count").where(col("Time") == year).limit(10)
+    top_10_year_productId_DF = top_10_year_productId_DF.union(temp)
+
+top_10_year_productId_DF.show()
+
+
+year_productId_concatenatedText_DF = reviews_DF.groupBy("Time", "ProductId").agg(concat_ws(" ", collect_list("Text")).alias("concatenated_text"))
+year_productId_concatenatedText_DF.show()
+year_productId_concatenatedText_DF.createOrReplaceTempView("year_productId_concatenatedText")
+
+
+year_productId_countWords_SQL = spark.sql("SELECT Time, ProductId, word, COUNT(*) as count_word FROM (SELECT Time, ProductId, EXPLODE(SPLIT(concatenated_text, ' ')) as word FROM year_productId_concatenatedText) GROUP BY Time, ProductId, word")
+year_productId_countWords_SQL.show()
+year_productId_countWords_SQL.createOrReplaceTempView("year_productId_countWords_SQL")
+
+
+top_5_year_productId_countWords_SQL = spark.sql("SELECT Time, ProductId, word, count_word FROM (SELECT Time, ProductId, word, count_word, ROW_NUMBER() OVER (PARTITION BY Time, ProductId ORDER BY count_word DESC) AS rank FROM year_productId_countWords_SQL) WHERE rank <= 10")
+top_5_year_productId_countWords_SQL.show()
+
+top10_year_productId_top5_words_DF = top_10_year_productId_DF.join(top_5_year_productId_countWords_SQL, ["Time", "ProductId"], "inner").sort("Time", "count", ascending=False)
+top10_year_productId_top5_words_DF.show()
 
 
 # $SPARK_HOME/bin/spark-submit --master local Documents/GitHub/first_project_baronato/first_job/spark_sql/first_job.py --input_path file:///home/andrea/Documents/GitHub/first_project_baronato/Reviews_parsed.csv
