@@ -17,10 +17,15 @@ n2 = 5
 indicies = [1, 6, 7]
 
 # tabella in un unico RDD
-table_RDD = spark.sparkContext.textFile(input_filepath).cache()
+input_RDD = spark.sparkContext.textFile(input_filepath).cache()
+
+# per rimuovere l'header
+header = input_RDD.first()
+
+input2_RDD = input_RDD.filter(lambda row: row != header)
 
 # RDD con righe divise
-rows_RDD = table_RDD.map(lambda line: line.split(','))
+rows_RDD = input2_RDD.map(lambda line: line.split(','))
 
 # RDD con solamente ProductId, Year e Text
 productID_year_text_RDD = rows_RDD.map(lambda x: [x[idx] for idx in indicies])

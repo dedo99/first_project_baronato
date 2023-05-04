@@ -27,6 +27,9 @@ CREATE TABLE wordcount_for_reviews AS
 	GROUP BY year, productId, word
 	ORDER BY year, productId, count DESC;
 
+INSERT OVERWRITE DIRECTORY '/user/pietro/output/HIVE/first_job'
+--INSERT OVERWRITE LOCAL DIRECTORY './Desktop/output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT a.year, a.productId, a.total_reviews, b.word, b.count
 FROM
 	(SELECT * FROM	
