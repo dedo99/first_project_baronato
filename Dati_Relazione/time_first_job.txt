@@ -1,0 +1,28 @@
+TEMPI PIETRO 
+Half-Reviews.csv 284.226
+MAP-REDUCE una passata: 0m 19,254s
+MAP-REDUCE due passate: 0m 7,341s + 0m 4,201s = 0m 11,542s
+SPARK: 0m 15,288s
+HIVE: 2m 11,953s
+SPARK SQL: 2m 20,375s
+
+Reviews_parsed.csv 568.452
+MAP-REDUCE una passata: 0m 27,300s
+MAP-REDUCE due passate: 0m 10,186s + 0m 4,285s = 0m 14,471s
+SPARK: 0m 21,619s
+HIVE: 3m 58,445s
+SPARK SQL: 3m 41,276s
+
+Double-Reviews.csv 1.136.904
+MAP-REDUCE una passata: 0m 52,272s
+MAP-REDUCE due passate: 0m 17,727s + 0m 4,304s = 0m 22,031s
+SPARK: 0m 35,288s
+HIVE: 7m 25,481s
+SPARK SQL: 6m 2,654s
+
+Quadruple-Reviews.csv 2.273.808
+MAP-REDUCE una passata: 1m 32,531s
+MAP-REDUCE due passate: 0m 30,324s + 0m 4,220s = 0m 34,544s
+SPARK: 1m 4,780s
+HIVE: 11m 28,607s
+SPARK SQL: 9m 13,075s

@@ -4,3 +4,7 @@ $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/streaming/hadoop-streaming-3.3.4.jar -m
 
 #ESECUZIONE SECONDA ITERAZIONE MAP_REDUCE
 $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/streaming/hadoop-streaming-3.3.4.jar -mapper ./Documents/GitHub/first_project_baronato/first_job/map_reduce/more_iteration/mapper2.py -reducer ./Documents/GitHub/first_project_baronato/first_job/map_reduce/more_iteration/reducer2.py -input /user/andrea/output/map_reduce_1_job_1_iteration/part-00000 -output /user/andrea/output/map_reduce_1_job_2_iteration
+
+
+#COMANDI PIETRO
+$HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/streaming/hadoop-streaming-3.3.4.jar -mapper ./Documenti/BigData/first_project_baronato/first_job/map_reduce/one_iteration/mapper.py -reducer ./Documenti/BigData/first_project_baronato/first_job/map_reduce/one_iteration/reducer.py -input /user/pietro/input/Half_Reviews.csv -output /user/pietro/output/firstjob

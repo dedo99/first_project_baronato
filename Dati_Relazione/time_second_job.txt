@@ -1,0 +1,28 @@
+TEMPI PIETRO 
+Half-Reviews.csv
+MAP-REDUCE primo metodo: 0m 5,258s
+MAP-REDUCE secondo metodo: 0m 5,225s
+SPARK: 0m 12,560s
+HIVE: 0m 17,994s
+SPARK SQL: 0m 16,255s
+
+Reviews_parsed.csv
+MAP-REDUCE primo metodo: 0m 7,381s
+MAP-REDUCE secondo metodo: 0m 7,204s
+SPARK: 0m 16,795s
+HIVE: 0m 21,531s
+SPARK SQL: 0m 18,332s
+
+Double-Reviews.csv
+MAP-REDUCE primo metodo: 0m 9,388s
+MAP-REDUCE secondo metodo: 0m 9,196s
+SPARK: 0m 23,944s
+HIVE: 0m 26,710s
+SPARK SQL: 0m 26,984s
+
+Quadruple-Reviews.csv
+MAP-REDUCE primo metodo: 0m 15,238s
+MAP-REDUCE secondo metodo: 0m 15,244s
+SPARK: 0m 38,416s
+HIVE: 0m 36,741s
+SPARK SQL: 0m 37,348s

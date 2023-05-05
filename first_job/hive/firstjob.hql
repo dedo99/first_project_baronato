@@ -7,7 +7,7 @@ CREATE TABLE docs (id INT, productId STRING, userId STRING, helpfulnessNum INT, 
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',';
 
-LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Reviews_parsed.csv' 
+LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Quadruple_Reviews.csv' 
 --LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews_parsed.csv' 
 	OVERWRITE INTO TABLE docs;
 
