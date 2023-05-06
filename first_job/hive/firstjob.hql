@@ -5,9 +5,10 @@ DROP TABLE IF EXISTS wordcount_for_reviews;
 
 CREATE TABLE docs (id INT, productId STRING, userId STRING, helpfulnessNum INT, helpfulnessDen INT, score INT, time STRING, text STRING)
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ',';
+FIELDS TERMINATED BY ','
+TBLPROPERTIES ("skip.header.line.count"="1");
 
-LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Quadruple_Reviews.csv' 
+LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Half_Reviews.csv' 
 --LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews_parsed.csv' 
 	OVERWRITE INTO TABLE docs;
 

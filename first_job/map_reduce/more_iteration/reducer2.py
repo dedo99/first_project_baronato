@@ -36,8 +36,10 @@ for line in sys.stdin:
     sorted_word2count = {k: v for k, v in sorted(word2count.items(),
                                                         key=lambda item: item[1], reverse=True)}
     
-    year_productId2top5words[(current_year, current_productid)] = list(sorted_word2count.keys())[:5]
+    year_productId2top5words[(current_year, current_productid)] = (list(sorted_word2count.keys())[:5],
+                                                                   list(map(str, list((sorted_word2count.values()))))[:5])
 
 
 for (year, productId) in year_productId2top5words:
-    print("%i\t%s\t%s" % (year, productId, ", ".join(year_productId2top5words[(year, productId)])))
+    print("%i\t%s\t%s\t%s" % (year, productId, ", ".join(year_productId2top5words[(year, productId)][0]),
+                                               ", ".join(year_productId2top5words[(year, productId)][1])))

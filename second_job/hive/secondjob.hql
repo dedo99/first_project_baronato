@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS userId2AvgUtility;
 
 CREATE TABLE docs (id INT, ProductId STRING, UserId STRING, HelpfulnessNumerator INT, HelpfulnessDenominator INT, Score INT, Time STRING, Text STRING)
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ',';
+FIELDS TERMINATED BY ','
+TBLPROPERTIES ("skip.header.line.count"="1");
 
 LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Quadruple_Reviews.csv' 
 --LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews_parsed.csv' 
