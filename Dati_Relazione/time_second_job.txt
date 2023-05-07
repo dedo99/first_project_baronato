@@ -26,3 +26,35 @@ MAP-REDUCE secondo metodo: 0m 15,244s
 SPARK: 0m 38,416s
 HIVE: 0m 36,741s
 SPARK SQL: 0m 37,348s
+
+
+---------------------------------------------------------------------------
+
+TEMPI ANDREA 
+Half-Reviews.csv
+MAP-REDUCE primo metodo: 0m 5,484s
+MAP-REDUCE secondo metodo: 0m 5,445s
+SPARK: 0m 12,308s
+HIVE: 0m 21,072s
+SPARK SQL: 0m 17,907s
+
+Reviews_parsed.csv
+MAP-REDUCE primo metodo: 0m 7,487s
+MAP-REDUCE secondo metodo: 0m 8,387s
+SPARK: 0m 17,642s
+HIVE: 0m 23,369s
+SPARK SQL: 0m 24,989s
+
+Double-Reviews.csv
+MAP-REDUCE primo metodo: 0m 11,520s
+MAP-REDUCE secondo metodo: 0m 10,413s
+SPARK: 0m 23,624s
+HIVE: 0m 30,826s
+SPARK SQL: 0m 29,592s
+
+Quadruple-Reviews.csv
+MAP-REDUCE primo metodo: 0m 17,499s
+MAP-REDUCE secondo metodo: 0m 16,415s
+SPARK: 0m 34,618s
+HIVE: 0m 45,042s
+SPARK SQL: 0m 44,853s
