@@ -26,3 +26,34 @@ MAP-REDUCE due passate: 0m 30,324s + 0m 4,220s = 0m 34,544s
 SPARK: 1m 4,780s
 HIVE: 11m 28,607s
 SPARK SQL: 9m 13,075s
+
+------------------------------------------------------------------------------------
+
+TEMPI ANDREA 
+Half-Reviews.csv 284.226
+MAP-REDUCE una passata: 0m 15,525s
+MAP-REDUCE due passate: 0m 7,251s + 0m 4,410s = 0m 11,661s
+SPARK: 0m 22,126s
+HIVE: 2m 40,027s
+SPARK SQL: 2m 46,014s
+
+Reviews_parsed.csv 568.452
+MAP-REDUCE una passata: 0m 27,377s
+MAP-REDUCE due passate: 0m 10,340s + 0m 4,292s = 0m 14,632s
+SPARK: 0m 37,336s
+HIVE: 5m 9,177s
+SPARK SQL: 4m 5,880s
+
+Double-Reviews.csv 1.136.904
+MAP-REDUCE una passata: 0m 58,481s
+MAP-REDUCE due passate: 0m 18,351s + 0m 4,341s = 0m 22.692s
+SPARK: 0m 45,537s
+HIVE: 10m 16,441s
+SPARK SQL: 7m 7,963s
+
+Quadruple-Reviews.csv 2.273.808
+MAP-REDUCE una passata: 5m54,467s
+MAP-REDUCE due passate: 0m 37,318s + 0m 4,526s = 0m 41,844s
+SPARK: 1m 8,980s
+HIVE: 16m 54,192s
+SPARK SQL: 10m 28,986s
