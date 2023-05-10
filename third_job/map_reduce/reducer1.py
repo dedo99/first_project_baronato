@@ -26,7 +26,7 @@ for line in sys.stdin:
 count = 0
 for user in user2products:
     if len(user2products[user]) > 2:
-        print('%s\t%s' % (user, " ".join(user2products[user])))
+        print('%s\t%s' % (user, ",".join(user2products[user])))
     else:
         count += 1
         logging.info("Number of users removed: %i", count)
