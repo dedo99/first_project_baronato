@@ -29,13 +29,15 @@ for line in sys.stdin:
 
 logging.info("Number of users: %i", len(user2products))
 
+#sorted_user2products = dict(sorted(user2products.items(), key=lambda x: len(x[1]), reverse=True))
+
 # utente -> prodotti 
 # utenti -> prodotti in comune
 
 # PER OGNI COPPIA DI UTENTI ABBIAMO LE INTERSEZIONI RILEVANTI TRA I GUSTI
 common_product2users = {}
 users = list(user2products.keys())
-
+logging.info(user2products['A1004703RC79J9'])
 
 num_compararisons = 0
 
@@ -44,9 +46,7 @@ for i in range(0, len(users)-1):
     for j in range(1, len(users)):
         common_elements = intersection(user2products[users[i]], user2products[users[j]])
         num_compararisons += 1
-        #logging.info("Intersection size: %i, Number of comparisons: %i", len(common_elements), num_compararisons)
         if len(common_elements) >= 3:
-            #continue
             fs = frozenset(common_elements)
             if fs not in common_product2users:
                 common_product2users[fs] = []
@@ -56,18 +56,19 @@ for i in range(0, len(users)-1):
                 common_product2users[fs].append(users[i])
             if users[j] not in common_product2users[fs]:
                 common_product2users[fs].append(users[j])
-    if num_compararisons >= 100000000:
-        break
+        #logging.info()
+    #if num_compararisons >= 1000000:
+    #    break
         
         
     
 
 # sort invertendo chiave e valore del dizionario
-sorted_users2common_product = {v: k for k, v in sorted(common_product2users.items(),
-                                                      key=lambda item: item[1][0], reverse=True)}
+#sorted_users2common_product = {v: k for k, v in sorted(common_product2users.items(),
+#                                                      key=lambda item: item[1][0], reverse=True)}
 
 
-for lista_user in sorted_users2common_product:
-    print("%s\t%s" % (", ".join(lista_user), ", ".join(list(sorted_users2common_product[lista_user]))))
+for lista_user in common_product2users:
+    print("%s\t%s" % (", ".join(lista_user), ", ".join(list(common_product2users[lista_user]))))
 
 logging.shutdown()

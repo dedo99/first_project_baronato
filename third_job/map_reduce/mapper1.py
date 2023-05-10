@@ -23,5 +23,3 @@ for line in sys.stdin:
     # Passo al reduce solamente gli elementi con score >= 4
     if score >= 4:
         print("%s\t%s" % (user_id, product_id))
-    else:
-        continue
