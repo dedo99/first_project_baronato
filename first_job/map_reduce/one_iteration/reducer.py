@@ -12,11 +12,11 @@ for line in sys.stdin:
 
     line = line.strip()
     try:
-        current_year_productid, current_text = line.split('\t')
+        current_year, current_productid_text = line.split('\t')
     except ValueError:
         continue
 
-    current_year, current_productid = current_year_productid.split('~')
+    current_productid, current_text = current_productid_text.split('~')
 
     words = current_text.split(' ')
 
