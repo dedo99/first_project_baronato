@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """reducer.py"""
+
 import logging
 import sys
 
@@ -11,20 +12,20 @@ def intersection(lst1, lst2):
     lst3 = [value for value in lst1 if value in lst2]
     return lst3
 
-# dict con la lista di prodotti piaciuti per ogni utente
 user2products = {}
 
 for line in sys.stdin:
-    # eliminazione degli spazi bianchi
-    line.strip()
 
-    # separazione dei campi del file sulla virgola
-    current_userid, current_productId  = line.split("\t")
+    #line = line.strip()
 
-    if current_userid not in user2products:
-        user2products[current_userid] = []
-    
-    user2products[current_userid].append(current_productId)
+    user, product_string = line.split("\t")
+
+    product_list = product_string.split(" ")
+
+    user2products[user] = product_list
+
+
+logging.info("Number of users: %i", len(user2products))
 
 # utente -> prodotti 
 # utenti -> prodotti in comune
