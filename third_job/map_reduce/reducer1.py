@@ -25,7 +25,7 @@ for line in sys.stdin:
     if current_userid not in user2products:
         user2products[current_userid] = []
     
-    user2products[current_userid].append(current_productId[:-2])
+    user2products[current_userid].append(current_productId)
 
 
 count = 0

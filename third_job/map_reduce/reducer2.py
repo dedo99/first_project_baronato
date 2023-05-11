@@ -64,11 +64,11 @@ for i in range(0, len(users)-1):
     
 
 # sort invertendo chiave e valore del dizionario
-#sorted_users2common_product = {v: k for k, v in sorted(common_product2users.items(),
-#                                                      key=lambda item: item[1][0], reverse=True)}
+sorted_by_first_user = {k: v for k, v in sorted(common_product2users.items(), key=lambda item: item[1][0])}
 
 
-for lista_user in common_product2users:
-    print("%s\t%s" % (", ".join(lista_user), ", ".join(list(common_product2users[lista_user]))))
+for product_list in sorted_by_first_user:
+    if len(sorted_by_first_user(product_list)) > 1:
+        print("%s\t%s" % (product_list, list(sorted_by_first_user[product_list])))
 
 logging.shutdown()
