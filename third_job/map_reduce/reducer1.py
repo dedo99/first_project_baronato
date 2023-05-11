@@ -19,6 +19,9 @@ for line in sys.stdin:
     # separazione dei ca'mpi del file sulla virgola
     current_userid, current_productId  = line.split("\t")
 
+    if '\n' in current_productId:
+        current_productId = current_productId.replace('\n', '')
+
     if current_userid not in user2products:
         user2products[current_userid] = []
     
