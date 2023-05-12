@@ -49,11 +49,15 @@ def flat_list_user(pair):
     return (frozset_product, set_user)
 
 
-cartesian_RDD = userID_productList_RDD.cartesian(userID_productList_RDD).filter(lambda x: x[0][0] != x[1][0] and lists_intersect(x[0][1], x[1][1])) \
+setProduct_setUser_cartesian_RDD = userID_productList_RDD.cartesian(userID_productList_RDD).filter(lambda x: x[0][0] != x[1][0] and lists_intersect(x[0][1], x[1][1])) \
     .map(lambda x: (frozenset(set(x[0][1]).intersection(x[1][1])), (x[0][0], x[1][0]))).groupByKey().map(flat_list_user)
 
+sort_sortProduct_setUser = setProduct_setUser_cartesian_RDD.sortBy(lambda pair: list(pair[1])[0])
 
 # azione necessaria per l'esecuzione di tutte le trasformazioni precedenti
-result = cartesian_RDD.collect()
+result = sort_sortProduct_setUser.collect()
 # stampa del risultato
 print(result)
+
+# salvataggio del risutato su file
+sort_sortProduct_setUser.saveAsTextFile(output_filepath)

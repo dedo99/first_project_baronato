@@ -49,11 +49,17 @@ CREATE TABLE user_pairs2intersection_selectionGreaterThan2 AS
     WHERE size_list > 2;
 
 
-SELECT prodotti_condivisi, set_users
+-- INSERT OVERWRITE DIRECTORY '/user/pietro/output/HIVE/first_job'
+INSERT OVERWRITE DIRECTORY '/user/andrea/output/third_job/hive_parsed'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY ','
+STORED AS TEXTFILE
+SELECT set_users, prodotti_condivisi
 FROM(   SELECT prodotti_condivisi, collect_set(user1) AS set_users, size(collect_set(user1)) as num_users
         FROM user_pairs2intersection_selectionGreaterThan2
         GROUP BY prodotti_condivisi) subview
-WHERE num_users >= 2;
+WHERE num_users >= 2
+ORDER BY set_users[0];
 
 
 -- SELECT *
