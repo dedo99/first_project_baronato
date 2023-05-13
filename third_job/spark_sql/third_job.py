@@ -55,11 +55,14 @@ pairsIntersGreater2_DF = spark.sql("SELECT user1, user2, prodotti_condivisi FROM
 
 pairsIntersGreater2_DF.createOrReplaceTempView("pairsIntersGreater2")
 
-final_DF = spark.sql("SELECT prodotti_condivisi, set_users FROM(SELECT prodotti_condivisi, "
+final_DF = spark.sql("SELECT set_users, prodotti_condivisi FROM (SELECT prodotti_condivisi, "
                      "collect_set(user1) AS set_users, size(collect_set(user1)) as num_users "
-                     "FROM pairsIntersGreater2 GROUP BY prodotti_condivisi) "
-                     "subview WHERE num_users >= 2")
+                     "FROM pairsIntersGreater2 GROUP BY prodotti_condivisi) subview "
+                     "WHERE num_users >= 2 ORDER BY set_users[0]")
 
-final_DF.show()
+final_to_write = final_DF.withColumn('set_users', col("set_users").cast("string"))\
+    .withColumn('prodotti_condivisi', col("prodotti_condivisi").cast("string"))
 
-final_DF.coalesce(1).write.format('csv').save("/user/spark_sql/third_job/output", header='true')
+final_to_write.show()
+
+final_to_write.coalesce(1).write.format('csv').save("/user/spark_sql/third_job/output", header='true')

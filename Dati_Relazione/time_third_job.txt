@@ -1,58 +1,50 @@
 TEMPI PIETRO 
 Half-Reviews.csv 284.226
-MAP-REDUCE una passata: 
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: 0m 5,184s + 4m 38,912s = 4m 44,096
+SPARK: 4m 43,398s
+HIVE: 3m 19,695s
+SPARK SQL: 2m 2,403s
 
 Reviews_parsed.csv 568.452
-MAP-REDUCE una passata: 
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: 0m 6,167s + 23m 18,681s = 23m 24,848
+SPARK: 23m 20,567s
+HIVE: 5m 53,499s
+SPARK SQL: 5m 13,427s
 
 Double-Reviews.csv 1.136.904
-MAP-REDUCE una passata: 
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: -
+SPARK: -
+HIVE: 5m 0,819s
+SPARK SQL: 5m 5,504s
 
 Quadruple-Reviews.csv 2.273.808
-MAP-REDUCE una passata: 
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: -
+SPARK: -
+HIVE: 5m 38,776s
+SPARK SQL: 5m 30,422s
 
 ------------------------------------------------------------------------------------
 
 TEMPI ANDREA 
 Half-Reviews.csv 284.226
-MAP-REDUCE una passata: 
 MAP-REDUCE due passate: 
 SPARK: 
 HIVE: 
 SPARK SQL: 
 
 Reviews_parsed.csv 568.452
-MAP-REDUCE una passata: 
 MAP-REDUCE due passate: 
 SPARK: 29m 19,943s
 HIVE: 6m 4,849s
 SPARK SQL: 
 
 Double-Reviews.csv 1.136.904
-MAP-REDUCE una passata: 
 MAP-REDUCE due passate: 
 SPARK: 
 HIVE: 
 SPARK SQL: 
 
 Quadruple-Reviews.csv 2.273.808
-MAP-REDUCE una passata: 
 MAP-REDUCE due passate: 
 SPARK: 
 HIVE: 

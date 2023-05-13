@@ -11,8 +11,8 @@ FIELDS TERMINATED BY ','
 TBLPROPERTIES ("skip.header.line.count"="1");
 
 
--- LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Half_Reviews.csv' 
-LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Reviews_parsed.csv' 
+LOAD DATA LOCAL INPATH './Documenti/BigData/first_project_baronato/Quadruple_Reviews.csv' 
+--LOAD DATA LOCAL INPATH './Documents/GitHub/first_project_baronato/Double_Reviews.csv' 
 	OVERWRITE INTO TABLE docs;
 
 
@@ -49,9 +49,9 @@ CREATE TABLE user_pairs2intersection_selectionGreaterThan2 AS
     WHERE size_list > 2;
 
 
--- INSERT OVERWRITE DIRECTORY '/user/pietro/output/HIVE/first_job'
-INSERT OVERWRITE DIRECTORY '/user/andrea/output/third_job/hive_parsed'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+INSERT OVERWRITE DIRECTORY '/user/pietro/output/HIVE/third_job'
+--INSERT OVERWRITE DIRECTORY '/user/andrea/output/third_job/hive_parsed'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 COLLECTION ITEMS TERMINATED BY ','
 STORED AS TEXTFILE
 SELECT set_users, prodotti_condivisi

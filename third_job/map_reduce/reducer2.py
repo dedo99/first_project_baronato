@@ -68,7 +68,7 @@ sorted_by_first_user = {k: v for k, v in sorted(common_product2users.items(), ke
 
 
 for product_list in sorted_by_first_user:
-    if len(sorted_by_first_user(product_list)) > 1:
+    if len(sorted_by_first_user[product_list]) > 1:
         print("%s\t%s" % (product_list, list(sorted_by_first_user[product_list])))
 
 logging.shutdown()
