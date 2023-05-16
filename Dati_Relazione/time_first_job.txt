@@ -52,8 +52,23 @@ HIVE: 10m 16,441s
 SPARK SQL: 7m 7,963s
 
 Quadruple-Reviews.csv 2.273.808
-MAP-REDUCE una passata: 5m54,467s
+MAP-REDUCE una passata: 5m 54,467s
 MAP-REDUCE due passate: 0m 37,318s + 0m 4,526s = 0m 41,844s
 SPARK: 1m 8,980s
 HIVE: 16m 54,192s
 SPARK SQL: 10m 28,986s
+
+---------------------------------------------------------------------------
+
+TEMPI AWS
+Revies_parsed.csv
+MAP-REDUCE: 29,936s + 28,748s
+HIVE: 116,849s
+SPARK:
+SPARK SQL:
+
+Quadruple_Reviews.csv
+MAP-REDUCE: 37,068s + 27,991
+HIVE: 237,890s
+SPARK:
+SPARK SQL:

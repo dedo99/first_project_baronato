@@ -49,3 +49,18 @@ MAP-REDUCE due passate:
 SPARK: 
 HIVE: 
 SPARK SQL: 
+
+---------------------------------------------------------------------------
+
+TEMPI AWS
+Revies_parsed.csv
+MAP-REDUCE: 27,771s + ? =
+HIVE: 2m 48,866s
+SPARK:
+SPARK SQL:
+
+Quadruple_Reviews.csv
+MAP-REDUCE: 
+HIVE: 3m 04,223s
+SPARK:
+SPARK SQL:
