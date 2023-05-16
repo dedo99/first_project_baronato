@@ -27,28 +27,28 @@ SPARK SQL: 5m 30,422s
 
 TEMPI ANDREA 
 Half-Reviews.csv 284.226
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: 0m 5,410s + 6m 13,617s = 6m 19,027s
+SPARK: 4m 52,753s
+HIVE: 2m 38,256s
+SPARK SQL: 1m 59,386s
 
 Reviews_parsed.csv 568.452
-MAP-REDUCE due passate: 
+MAP-REDUCE due passate: 0m 8,325s + 41m 2,503s = 41m 10,828s
 SPARK: 29m 19,943s
 HIVE: 6m 4,849s
-SPARK SQL: 
+SPARK SQL: 5m 14,949s
 
 Double-Reviews.csv 1.136.904
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: -
+SPARK: -
+HIVE: 5m 14,080s
+SPARK SQL: 4m 45,842s
 
 Quadruple-Reviews.csv 2.273.808
-MAP-REDUCE due passate: 
-SPARK: 
-HIVE: 
-SPARK SQL: 
+MAP-REDUCE due passate: -
+SPARK: -
+HIVE: 5m 35,715s
+SPARK SQL: 5m 17,127s
 
 ---------------------------------------------------------------------------
 

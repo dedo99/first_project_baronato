@@ -66,3 +66,5 @@ final_to_write = final_DF.withColumn('set_users', col("set_users").cast("string"
 final_to_write.show()
 
 final_to_write.coalesce(1).write.format('csv').save("/user/spark_sql/third_job/output", header='true')
+
+# $SPARK_HOME/bin/spark-submit --master local Documents/GitHub/first_project_baronato/third_job/spark_sql/third_job.py --input_path file:///home/andrea/Documents/GitHub/first_project_baronato/Half_Reviews.csv
